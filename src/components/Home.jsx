@@ -42,7 +42,7 @@ export default function Home() {
                 className="relative"
               >
                 <img
-                  src="../assets/image1.jpg"
+                  src="src/assets/image1.jpg"
                   alt=""
                   className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
                 ></img>
@@ -56,7 +56,7 @@ export default function Home() {
                 className="relative"
               >
                 <img
-                  src="../assets/image2.jpg"
+                  src="src/assets/image2.jpg"
                   alt=""
                   className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
                 ></img>
