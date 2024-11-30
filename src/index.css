@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+.secondary-title {
+  @apply text-3xl font-bold;
+}
+
+.secondary-title::before {
+  content: "";
+  @apply block w-12 h-2 bg-selectedText rounded-full mb-1;
+}
+
+.section-paragraph {
+  @apply text-secondary my-6 w-full max-w-3xl;
+}
+
+.badge {
+  @apply px-4 py-2 text-sm bg-badge rounded-md;
+}
+
+.career-table {
+  @apply border border-solid border-black align-top;
+}
+
+.background-skill::before {
+  content: "SKILL";
+  -webkit-text-stroke: 1px rgb(128, 96, 96);
+  @apply font-serif absolute right-32 text-transparent text-7xl z-0 lg:text-9xl;
+}
+.background-project::before {
+  content: "PROJECT";
+  -webkit-text-stroke: 1px rgb(128, 96, 96);
+  @apply font-serif absolute right-32 text-white text-7xl lg:text-9xl;
+}
+.background-todo::before {
+  content: "CALENDAR";
+  -webkit-text-stroke: 1px rgb(128, 96, 96);
+  @apply font-serif absolute right-32 text-white text-5xl md:text-7xl lg:text-8xl xl:text-9xl;
+}

@@ -1,0 +1,27 @@
+{
+  "frontend": {
+    "output": {
+      "first": "生命保険生命保険支払い業務アプリ1",
+      "second": "生命保険生命保険支払い業務アプリ2",
+      "third": "生命保険生命保険支払い業務アプリ3"
+    },
+    "level": {
+      "first": "level1",
+      "second": "level1",
+      "third": "level1"
+    }
+  },
+
+  "backend": {
+    "output": {
+      "first": "バックエンド1",
+      "second": "バックエンド2",
+      "third": "バックエンド3"
+    },
+    "level": {
+      "first": "level1",
+      "second": "level1",
+      "third": "level1"
+    }
+  }
+}
