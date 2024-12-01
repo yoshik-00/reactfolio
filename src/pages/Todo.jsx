@@ -46,16 +46,17 @@ const Todo = () => {
           }
         );
         const data = await response.json();
-        console.log(data.results);
         setprimaryTasks(data.results);
       } catch (error) {
-        console.error("データ取得エラー:", error);
+        console.error("優先度高のデータ取得エラー:", error);
       }
     };
     getPrimaryTasks();
   }, []);
+
   //Taskを全取得
   const [tasks, setTasks] = useState([]);
+  const [taskDates, setTaskDates] = useState([]);
   useEffect(() => {
     const getTasks = async () => {
       try {
@@ -66,34 +67,34 @@ const Todo = () => {
           body: JSON.stringify({}),
         });
         const data = await response.json();
-        setTasks(data.results);
+
+        //締切日取得
+        const dates = data.results.map(
+          (task) => task.properties.Deadline?.date?.start
+        );
+        setTaskDates(dates);
+
+        //タスク名取得
+        const taskName = data.results.map(
+          (task) => task.properties.Task?.rich_text[0].plain_text
+        );
+        setTasks(taskName);
       } catch (error) {
         console.error("データ取得エラー:", error);
       }
     };
     getTasks();
   }, []);
-  // return (
-  //   <div>
-  //     {tasks.map((task, index) => (
-  //       <div key={index}>
-  //         {/* taskの内容を表示する例 */}
-  //         <p>{`タスク名：${task.properties.Task?.rich_text[0].plain_text}`}</p>
-  //         <p>{`〆切：${task.properties.Deadline?.date?.start}`}</p>
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
 
   const [calendarTouched, setCalendarTouched] = useState(false);
 
-  // handle dates
+  // 初期化
   let today = startOfToday();
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
   let [selectedDay, setSelectedDay] = useState(today);
   let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
 
-  //useMemoで週の開始日と終了日を取得
+  //useMemoで当月の日付を保持
   let days = useMemo(
     () =>
       eachDayOfInterval({
@@ -114,6 +115,9 @@ const Todo = () => {
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
   }
 
+  function hasTask(day) {
+    return taskDates.some((element) => element === day);
+  }
   return (
     <div
       id="todo"
@@ -127,7 +131,7 @@ const Todo = () => {
           <h1 className="background-todo text-lg">To-do Calendar</h1>
         </div>
 
-        {/* calendar */}
+        {/* カレンダー */}
 
         <div className="flex flex-col min-h-screen justify-center items-center gap-2 bg-stone-50">
           <div
@@ -141,9 +145,8 @@ const Todo = () => {
             </span>
           </div>
 
-          {/* calendar implementation */}
           <div className="flex flex-col gap-2 h-[450px] w-[380px] mt-12">
-            {/* calendar header */}
+            {/* ヘッダー */}
             <div className="grid grid-cols-3">
               <button
                 type="button"
@@ -170,7 +173,7 @@ const Todo = () => {
               </button>
             </div>
 
-            {/* calendar body */}
+            {/* ボディ */}
             <div>
               <div className="grid grid-cols-7 mt-4">
                 {dayNames.map((day, i) => {
@@ -190,7 +193,7 @@ const Todo = () => {
                   );
                 })}
               </div>
-              {/* 各曜日をmapで生成 */}
+              {/* 各日をmapで生成 */}
               <div className="grid grid-cols-7 text-sm">
                 {days.map((day, dayIdx) => {
                   return (
@@ -249,6 +252,10 @@ const Todo = () => {
                           {format(day, "d")}
                         </time>
 
+                        {/* taskがある場合「予定あり」としてクリック時モーダルを表示 */}
+                        {hasTask(format(day, "yyyy-MM-dd")) && (
+                          <span className="text-[0.5rem]">予定あり</span>
+                        )}
                         <CheckCircle2
                           className={cn(
                             "hidden",
