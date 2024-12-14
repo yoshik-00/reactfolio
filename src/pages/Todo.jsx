@@ -4,39 +4,30 @@ import { cn, dayNames } from "../lib/utils";
 import { SiGoogletasks } from "react-icons/si";
 import {
   add,
-  addDays,
-  addHours,
   eachDayOfInterval,
-  eachMinuteOfInterval,
-  endOfDay,
   endOfMonth,
   endOfWeek,
   format,
   getDay,
-  isAfter,
   isBefore,
   isEqual,
   isSameMonth,
   isThisMonth,
   isToday,
   parse,
-  parseISO,
-  set,
-  startOfDay,
   startOfToday,
   startOfWeek,
-  startOfYesterday,
 } from "date-fns";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState, useEffect } from "react";
+import TaskModal from "../components/TaskModal";
 
 const Todo = () => {
-  //優先すべきTask取得
+  //優先Taskを取得
   const [primaryTasks, setprimaryTasks] = useState([]);
   useEffect(() => {
     const getPrimaryTasks = async () => {
       try {
-        // APIからデータを取得する例
         const response = await fetch(
           "http://localhost:3001/notion/primary-tasks",
           {
@@ -57,10 +48,12 @@ const Todo = () => {
   //Taskを全取得
   const [tasks, setTasks] = useState([]);
   const [taskDates, setTaskDates] = useState([]);
+  const [priorities, setpriorities] = useState([]);
+  const [fillingDates, setFillingDates] = useState([]);
+
   useEffect(() => {
     const getTasks = async () => {
       try {
-        // APIからデータを取得する例
         const response = await fetch("http://localhost:3001/notion/tasks", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -70,15 +63,32 @@ const Todo = () => {
 
         //締切日取得
         const dates = data.results.map(
-          (task) => task.properties.Deadline?.date?.start
+          (task) => task.properties.Deadline?.date?.start || "未記入"
         );
         setTaskDates(dates);
 
         //タスク名取得
         const taskName = data.results.map(
-          (task) => task.properties.Task?.rich_text[0].plain_text
+          (task) => task.properties.Task?.rich_text[0].plain_text || "未記入"
         );
         setTasks(taskName);
+
+        //優先度取得
+        const priority = data.results.map(
+          (task) => task.properties.Priority?.status.name || "未記入"
+        );
+        setpriorities(priority);
+
+        //記入日取得
+        const fillingDate = data.results.map(
+          (task) => task.created_time || "未記入"
+        );
+        const formattedDates = fillingDate.map((date) =>
+          date !== "未記入"
+            ? new Date(date).toISOString().split("T")[0]
+            : "未記入"
+        );
+        setFillingDates(formattedDates);
       } catch (error) {
         console.error("データ取得エラー:", error);
       }
@@ -94,7 +104,7 @@ const Todo = () => {
   let [selectedDay, setSelectedDay] = useState(today);
   let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
 
-  //useMemoで当月の日付を保持
+  //当月の日付を保持
   let days = useMemo(
     () =>
       eachDayOfInterval({
@@ -105,19 +115,20 @@ const Todo = () => {
   );
 
   //先月ボタン押下後
-  function prevMonth() {
+  const prevMonth = () => {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
-  }
+  };
   //翌月ボタン押下後
-  function nextMonth() {
+  const nextMonth = () => {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
-  }
-
-  function hasTask(day) {
+  };
+  //タスクがある日
+  const hasTask = (day) => {
     return taskDates.some((element) => element === day);
-  }
+  };
+
   return (
     <div
       id="todo"
@@ -132,7 +143,6 @@ const Todo = () => {
         </div>
 
         {/* カレンダー */}
-
         <div className="flex flex-col min-h-screen justify-center items-center gap-2 bg-stone-50">
           <div
             className={cn("flex flex-col gap-2 justify-center items-center")}
@@ -140,8 +150,7 @@ const Todo = () => {
             <span className="mx-8 text-md sm:text-lg text-secondary font-serif font-semibold px-2">
               私の月別スケジュールです。
               <br />
-              NOTION
-              APIを使用して、業務での開発スケジュールや研修の日程等をスマートフォンと連携させています。
+              NOTIONとAPIで連携しており開発スケジュールや研修の日程等をスマホからも管理できるようにしています。
             </span>
           </div>
 
@@ -234,13 +243,6 @@ const Todo = () => {
                         )}
                         disabled={isBefore(day, today)}
                       >
-                        {/* {isAfter(day, startOfYesterday()) && (
-                          <span className="hidden group-hover:flex absolute top-0 -translate-x-.5 -translate-y-4 z-10 text-[11px] bg-slate-900 text-slate-100 px-1 rounded-md gap-1">
-                            <span>{availableTimesInThisMonth[dayIdx]}</span>
-                            <span>Available</span>
-                          </span>
-                        )} */}
-
                         <time
                           dateTime={format(day, "yyyy-MM-dd")}
                           className={cn(
@@ -252,9 +254,21 @@ const Todo = () => {
                           {format(day, "d")}
                         </time>
 
-                        {/* taskがある場合「予定あり」としてクリック時モーダルを表示 */}
+                        {/* taskがある場合*/}
                         {hasTask(format(day, "yyyy-MM-dd")) && (
-                          <span className="text-[0.5rem]">予定あり</span>
+                          <>
+                            {
+                              <TaskModal
+                                params={{
+                                  selectedDate: format(day, "yyyy-MM-dd"),
+                                  taskName: tasks,
+                                  priority: priorities,
+                                  deadline: taskDates,
+                                  taskDate: fillingDates,
+                                }}
+                              />
+                            }
+                          </>
                         )}
                         <CheckCircle2
                           className={cn(
@@ -264,12 +278,6 @@ const Todo = () => {
                             isEqual(day, today) && "text-blue-900"
                           )}
                         />
-
-                        {/* {isAfter(day, startOfYesterday()) && (
-                          <TimesBar
-                          // times={availableTimesInThisMonthForEachDay[dayIdx]}
-                          />
-                        )} */}
                       </button>
                     </div>
                   );
@@ -280,36 +288,22 @@ const Todo = () => {
 
           <div>
             <div className="flex flex-col items-center w-full justify-center gap-1">
-              <div className="flex items-center w-full gap-1">
+              <div className="flex items-center w-full gap-1 break-words">
                 <SiGoogletasks />
                 優先すべき用事があります。
               </div>
-              {/* <div className="flex flex-col items-start"> */}
               {primaryTasks && primaryTasks.length > 0 ? (
                 primaryTasks.map((task, index) => (
-                  <span key={index} className="text-left w-full">
+                  <div key={index} className="text-left w-full">
                     {index + 1} -{" "}
-                    {task.properties.Task?.rich_text[0].plain_text}
-                  </span>
+                    {task.properties.Task?.rich_text[0]?.plain_text}
+                  </div>
                 ))
               ) : (
                 <span>特にありません</span>
               )}
-              {/* </div> */}
             </div>
           </div>
-          {/* <div className={cn(`hidden`, calendarTouched && "block")}>
-            <span className="flex items-center w-full justify-center gap-1">
-              <span>
-                Select your reservation time for
-                <span className="text-orange-950 font-semibold pl-1">
-                  {format(selectedDay, "dd MMMM yyyy").toString()}
-                </span>
-              </span>
-            </span>
-
-            <AvailableHours freeTimes={freeTimes} />
-          </div> */}
         </div>
 
         <BackButton />

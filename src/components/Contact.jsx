@@ -59,7 +59,7 @@ const Contact = () => {
     >
       <section className="w-full">
         <h2 className="secondary-title">お問い合わせ</h2>
-        <p className="section-paragraph">
+        <p className="section-paragraph text-secondary font-semibold">
           お問い合わせは下記のフォームからお願いいたします。
           <br />
           <span className="text-red-700"> * </span>は必ず入力してください。
