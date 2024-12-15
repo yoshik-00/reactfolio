@@ -107,7 +107,8 @@ const TaskModal = ({ params }) => {
 
           <div className="flex justify-end">
             <button
-              className="flex items-center my-8 bg-badge text-black px-4 py-2 rounded shadow hover:bg-slate-700  "
+              // className="flex items-center my-8 bg-badge text-black px-4 py-2 rounded shadow hover:bg-slate-700  "
+              className="flex items-center my-8 text-black px-4 py-2 hover:text-selectedText transition-all duration-300"
               onClick={handleCloseModal}
             >
               <TiArrowBack />

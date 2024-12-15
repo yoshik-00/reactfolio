@@ -6,7 +6,10 @@ export default function BackButton() {
     window.history.back();
   };
   return (
-    <button className="flex items-center my-8" onClick={handleBack}>
+    <button
+      className="flex items-center my-8 hover:text-selectedText transition-all duration-300"
+      onClick={handleBack}
+    >
       <TiArrowBack />
       戻る
     </button>
