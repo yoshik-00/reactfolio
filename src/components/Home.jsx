@@ -47,8 +47,7 @@ export default function Home() {
                 className="relative"
               >
                 <img
-                  // src="src/assets/image1.jpg"
-                  src="/Users/yoshina/Desktop/dev/local/latest/reactfolio/src/assets/image1.jpg"
+                  src="src/assets/image1.jpg"
                   alt=""
                   className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
                 ></img>
