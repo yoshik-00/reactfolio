@@ -5,6 +5,10 @@ import Navbar from "./Navbar";
 import Background from "./Background";
 import About from "./About";
 import Contact from "./Contact";
+import Image1 from "../assets/image1.jpg";
+import Image2 from "../assets/image2.jpg";
+import Auth from "../pages/Auth";
+import { signOut } from "aws-amplify/auth";
 
 export default function Home() {
   return (
@@ -25,6 +29,9 @@ export default function Home() {
       </div>
 
       {/* body */}
+      <div>
+        <button onClick={signOut}>サインアウト</button>
+      </div>
       <div className="font-NotoSerifJP bg-body text-black">
         {/* background image*/}
         <Background />
@@ -47,7 +54,7 @@ export default function Home() {
                 className="relative"
               >
                 <img
-                  src="src/assets/image1.jpg"
+                  src={Image1}
                   alt=""
                   className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
                 ></img>
@@ -61,7 +68,7 @@ export default function Home() {
                 className="relative"
               >
                 <img
-                  src="src/assets/image2.jpg"
+                  src={Image2}
                   alt=""
                   className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
                 ></img>

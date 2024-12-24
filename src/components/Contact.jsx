@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { API_URL } from "../lib/url";
+const url = API_URL;
 
 const Contact = () => {
   //hook form
@@ -28,7 +30,7 @@ const Contact = () => {
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      const response = await fetch("http://localhost:3001/notion/form", {
+      const response = await fetch(`${url}/notion/form`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

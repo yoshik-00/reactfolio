@@ -21,6 +21,9 @@ import {
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState, useEffect } from "react";
 import TaskModal from "../components/TaskModal";
+import { API_URL } from "../lib/url";
+
+const url = API_URL;
 
 const Todo = () => {
   //優先Taskを取得
@@ -28,14 +31,11 @@ const Todo = () => {
   useEffect(() => {
     const getPrimaryTasks = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:3001/notion/primary-tasks",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({}),
-          }
-        );
+        const response = await fetch(`${url}/notion/primary-tasks`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+        });
         const data = await response.json();
         setprimaryTasks(data.results);
       } catch (error) {
@@ -54,7 +54,7 @@ const Todo = () => {
   useEffect(() => {
     const getTasks = async () => {
       try {
-        const response = await fetch("http://localhost:3001/notion/tasks", {
+        const response = await fetch(`${url}/notion/tasks`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
@@ -69,7 +69,7 @@ const Todo = () => {
 
         //タスク名取得
         const taskName = data.results.map(
-          (task) => task.properties.Task?.rich_text[0].plain_text || "未記入"
+          (task) => task.properties.Task?.rich_text[0]?.plain_text || "未記入"
         );
         setTasks(taskName);
 
@@ -296,7 +296,8 @@ const Todo = () => {
                 primaryTasks.map((task, index) => (
                   <div key={index} className="text-left w-full">
                     {index + 1} -{" "}
-                    {task.properties.Task?.rich_text[0]?.plain_text}
+                    {task.properties.Task?.rich_text[0]?.plain_text ||
+                      "記入なし"}
                   </div>
                 ))
               ) : (
