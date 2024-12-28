@@ -7,19 +7,14 @@ import Home from "./components/Home";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import Todo from "./pages/Todo";
-import Auth from "./pages/Auth";
-import { useEffect, useState } from "react";
-
-const PrivateRoute = ({ element, isAuthenticated }) => {
-  return isAuthenticated ? element : <Auth />;
-};
+// import Auth from "./pages/Auth";
 
 const App = () => {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/Auth" element={<Auth />}></Route>
+          {/* <Route path="/Auth" element={<Auth />}></Route> */}
           <Route path="/" element={<Home />}></Route>
           <Route path="/Todo" element={<Todo />}></Route>
           <Route path="/Projects" element={<Projects />}></Route>

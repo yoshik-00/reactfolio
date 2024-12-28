@@ -7,10 +7,23 @@ import About from "./About";
 import Contact from "./Contact";
 import Image1 from "../assets/image1.jpg";
 import Image2 from "../assets/image2.jpg";
-import Auth from "../pages/Auth";
-import { signOut } from "aws-amplify/auth";
+// import Auth from "../pages/Auth";
 
-export default function Home() {
+import { signOut } from "aws-amplify/auth";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+
+import { Amplify } from "aws-amplify";
+
+import awsExports from "../aws-exports";
+Amplify.configure(awsExports);
+
+// const federated = {
+//   google_client_id:
+//     "601800644212-f7oarsjbuu2gadhai3qu9ifb53trik8t.apps.googleusercontent.com",
+// };
+// export default function Home() {
+const Home = () => {
   return (
     <>
       <div className="py-6">
@@ -182,4 +195,6 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
+
+export default withAuthenticator(Home, { socialProviders: ["google"] });
