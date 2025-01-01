@@ -7,22 +7,8 @@ import About from "./About";
 import Contact from "./Contact";
 import Image1 from "../assets/image1.jpg";
 import Image2 from "../assets/image2.jpg";
-// import Auth from "../pages/Auth";
-
-import { signOut } from "aws-amplify/auth";
-import { withAuthenticator } from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
-
-import { Amplify } from "aws-amplify";
-
-import awsExports from "../aws-exports";
-Amplify.configure(awsExports);
-
-// const federated = {
-//   google_client_id:
-//     "601800644212-f7oarsjbuu2gadhai3qu9ifb53trik8t.apps.googleusercontent.com",
-// };
-// export default function Home() {
+import Auth from "../pages/Auth";
+import SignOut from "./SignOut";
 const Home = () => {
   return (
     <>
@@ -42,9 +28,6 @@ const Home = () => {
       </div>
 
       {/* body */}
-      <div>
-        <button onClick={signOut}>サインアウト</button>
-      </div>
       <div className="font-NotoSerifJP bg-body text-black">
         {/* background image*/}
         <Background />
@@ -192,9 +175,24 @@ const Home = () => {
         </div>
         {/* contact */}
         <Contact />
+        <div className="mt-32 container flex justify-end items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
+          <SignOut />
+        </div>
       </div>
+
+      <footer className="border-t border-black container  flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
+        <div className="footer_contents">
+          <div className="footer_logo hover:text-selectedText transition-all duration-300 pt-3">
+            <a href="">Naoto Yoshikawa Portfolio</a>
+          </div>
+          <p className="copyright pb-3">
+            ©️2024 naoto yoshikawa. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
     </>
   );
 };
 
-export default withAuthenticator(Home, { socialProviders: ["google"] });
+// export default withAuthenticator(Home, { socialProviders: ["google"] });
+export default Home;

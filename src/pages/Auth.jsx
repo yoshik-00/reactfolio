@@ -1,47 +1,38 @@
-// // import { Amplify } from "aws-amplify";
-// // import { Authenticator } from "@aws-amplify/ui-react";
-// // import "@aws-amplify/ui-react/styles.css";
-// // import awsExports from "../aws-exports";
-// // import { useNavigate } from "react-router";
-// // import { useEffect } from "react";
-// // import { signOut } from "aws-amplify/auth";
-// // import Home from "../components/Home";
+import { useEffect } from "react";
+import { useAuth } from "react-oidc-context";
+import { useLocation, useNavigate } from "react-router-dom";
 
-// // Amplify.configure(awsExports);
+function Auth() {
+  const navigate = useNavigate();
+  const auth = useAuth();
+  //認証済
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      navigate("/?isAuthenticated=true");
+    }
+  }, [auth.isAuthenticated, navigate]);
+  //認証済
+  if (auth.isAuthenticated) {
+    return (
+      <div>
+        authenticated! Redirecting to Home...
+        {/* <pre> Hello: {auth.user?.profile.email} </pre>
+          <pre> ID Token: {auth.user?.id_token} </pre>
+          <pre> Access Token: {auth.user?.access_token} </pre>
+          <pre> Refresh Token: {auth.user?.refresh_token} </pre> */}
+      </div>
+    );
+  }
+  if (auth.isLoading) {
+    return <div>Loading...</div>;
+  }
 
-// // const Auth = () => {
-// //   return (
-// //     <Authenticator socialProviders={["google"]}>
-// //       {({ signOut, user }) => (
-// //         <main>
-// //           <h1>Hello {user.username}</h1>
-// //           <button onClick={signOut}>Sign out</button>
-// //         </main>
-// //       )}
-// //     </Authenticator>
-// //   );
-// // };
+  if (auth.error) {
+    return <div>Encountering error... {auth.error.message}</div>;
+  }
 
-// // export default Auth;
+  //未認証
+  return auth.signinRedirect();
+}
 
-// import React from "react";
-// import { Amplify } from "aws-amplify";
-
-// import { Authenticator } from "@aws-amplify/ui-react";
-// import "@aws-amplify/ui-react/styles.css";
-// import awsExports from "../aws-exports";
-
-// Amplify.configure(awsExports);
-
-// export default function App() {
-//   return (
-//     <Authenticator socialProviders={["google"]}>
-//       {({ signOut, user }) => (
-//         <main>
-//           <h1>Hello {user.username}</h1>
-//           <button onClick={signOut}>Sign out</button>
-//         </main>
-//       )}
-//     </Authenticator>
-//   );
-// }
+export default Auth;
