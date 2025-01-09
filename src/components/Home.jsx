@@ -9,7 +9,10 @@ import Image1 from "../assets/image1.jpg";
 import Image2 from "../assets/image2.jpg";
 import Auth from "../pages/Auth";
 import SignOut from "./SignOut";
+import { useSelector } from "react-redux";
 const Home = () => {
+  const { isAuth } = useSelector((store) => store.auth);
+  console.log(isAuth);
   return (
     <>
       <div className="py-6">
@@ -17,7 +20,7 @@ const Home = () => {
           <div className="text-lg font-bold items-center">
             {/* <Todo /> */}
             <Link
-              to="/Todo"
+              to="/todo"
               className="hover:text-selectedText transition-all duration-300"
             >
               <FaCalendarCheck />
@@ -43,9 +46,9 @@ const Home = () => {
             <p className="section-paragraph: text-secondary font-semibold">
               今までに携わってきたプロジェクト
             </p>
-            <div className="my-16 grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-6">
+            <div className="my-16 grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-6 z-20">
               <Link
-                to="/Projects"
+                to="/projects"
                 state={{ state: "生命保険" }}
                 className="relative"
               >
@@ -59,7 +62,7 @@ const Home = () => {
                 </span>
               </Link>
               <Link
-                to="/Projects"
+                to="/projects"
                 state={{ state: "医療中間サーバ" }}
                 className="relative"
               >
@@ -87,7 +90,7 @@ const Home = () => {
             </p>
             <div className="my-16 items-start">
               <div className="w-full border border-body p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:border-black transition-all duration-300 cursor-pointer">
-                <Link to="/Skills" state={{ state: "フロントエンド" }}>
+                <Link to="/skills" state={{ state: "フロントエンド" }}>
                   <div className="text-center flex flex-wrap justify-center lg:text-left lg:block">
                     <h3 className="text-3xl font-semibold">
                       フロントエンド開発
@@ -131,7 +134,7 @@ const Home = () => {
               </div>
 
               <div className="w-full border border-body p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:border-black transition-all duration-300 cursor-pointer">
-                <Link to="/Skills" state={{ state: "バックエンド" }}>
+                <Link to="/skills" state={{ state: "バックエンド" }}>
                   <div className="text-center flex flex-wrap justify-center lg:text-left lg:block">
                     <h3 className="text-3xl font-semibold">バックエンド開発</h3>
                     <table className="items-center w-full justify-start gap-3 lg:w-auto mt-6 mb-8">
@@ -186,7 +189,7 @@ const Home = () => {
             <a href="">Naoto Yoshikawa Portfolio</a>
           </div>
           <p className="copyright pb-3">
-            ©️2024 naoto yoshikawa. All Rights Reserved.
+            ©️2025 naoto yoshikawa. All Rights Reserved.
           </p>
         </div>
       </footer>

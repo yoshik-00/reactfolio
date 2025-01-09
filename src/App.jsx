@@ -8,36 +8,28 @@ import Skills from "./pages/Skills";
 import Todo from "./pages/Todo";
 import Auth from "./pages/Auth";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const isAuth = queryParams.get("isAuthenticated");
-
-  useEffect(() => {
-    if (isAuth === "true") {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
-  }, [isAuth]);
+  const { isAuth } = useSelector((store) => store.auth);
   return (
     <Routes>
       {/* 未認証 */}
-      {!isAuthenticated ? (
-        <Route path="/*" element={<Auth setAuth={setIsAuthenticated} />} />
+      {!isAuth ? (
+        <>
+          <Route path="/*" element={<Auth />} />
+        </>
       ) : (
         <>
           {/* 認証済 */}
           <Route path="/" element={<Home />} />
-          <Route path="/Projects" element={<Projects />} />
-          <Route path="/Skills" element={<Skills />} />
-          <Route path="/Todo" element={<Todo />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/todo" element={<Todo />} />
+          {/* NotFound */}
+          <Route path="/*" element={<NotFound />} />
         </>
       )}
-      {/* NotFound */}
-      <Route path="/*" element={<NotFound />} />
     </Routes>
   );
 };

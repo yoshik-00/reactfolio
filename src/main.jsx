@@ -3,6 +3,8 @@ import App from "./App.jsx";
 import "./index.css";
 import { AuthProvider } from "react-oidc-context";
 import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./reducks/store/store.js";
 
 const cognitoAuthConfig = {
   authority:
@@ -14,10 +16,12 @@ const cognitoAuthConfig = {
 };
 createRoot(document.getElementById("root")).render(
   <>
-    <AuthProvider {...cognitoAuthConfig}>
-      <Router>
-        <App />
-      </Router>
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider {...cognitoAuthConfig}>
+        <Router>
+          <App />
+        </Router>
+      </AuthProvider>
+    </Provider>
   </>
 );

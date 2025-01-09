@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaBars } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef(null);
+
   const toggleMenu = () => {
     setIsOpen((isOpen) => !isOpen);
   };
+
+  const OutsideClick = () => {
+    if (ref.current && !ref.current.contains(event.target)) {
+    }
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", OutsideClick);
+    return () => {
+      // クリーンアップ
+      document.removeEventListener("mousedown", OutsideClick);
+    };
+  }, []);
+
   return (
     <>
       <div className="space-x-12 hidden md:flex items-center">
@@ -40,7 +57,11 @@ const Navbar = () => {
           お問い合わせ
         </a>
       </div>
-      <div className="md:hidden hover:text-selectedText transition-all duration-300">
+      <div
+        className={`${
+          isOpen ? "hidden" : ""
+        } md:hidden hover:text-selectedText transition-all duration-300 z-40`}
+      >
         <button
           id="barbutton"
           onClick={toggleMenu}
@@ -53,25 +74,51 @@ const Navbar = () => {
         </button>
       </div>
       <ul
+        ref={ref}
         id="menu"
-        className={`fixed top-0 left-0 z-0 w-full bg-gray-500 opacity-50 text-center font-bold text-white transition-transform ease-linear ${
+        className={`fixed top-0 left-0 z-30 w-full bg-gray-500 opacity-50 text-center font-bold text-white transition-transform ease-linear ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <li className="p-1">
-          <a href="#home">ホーム</a>
+          <a
+            href="#home"
+            className="hover:text-selectedText transition-all duration-300"
+          >
+            ホーム
+          </a>
         </li>
         <li className="p-1">
-          <a href="#about">私について</a>
+          <a
+            href="#about"
+            className="hover:text-selectedText transition-all duration-300"
+          >
+            私について
+          </a>
         </li>
         <li className="p-1">
-          <a href="#projects">プロジェクト</a>
+          <a
+            href="#projects"
+            className="hover:text-selectedText transition-all duration-300"
+          >
+            プロジェクト
+          </a>
         </li>
         <li className="p-1">
-          <a href="#skills">スキル一覧</a>
+          <a
+            href="#skills"
+            className="hover:text-selectedText transition-all duration-300"
+          >
+            スキル一覧
+          </a>
         </li>
         <li className="p-1">
-          <a href="#contact">お問い合わせ</a>
+          <a
+            href="#contact"
+            className="hover:text-selectedText transition-all duration-300"
+          >
+            お問い合わせ
+          </a>
         </li>
       </ul>
     </>
