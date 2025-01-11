@@ -2,7 +2,7 @@ import BackButton from "../components/BackButton";
 import { BiAnchor } from "react-icons/bi";
 import { useState } from "react";
 import { useLocation } from "react-router";
-import data from "../skill.json";
+import data from "../skills.json";
 
 // 正しい記述例
 const Skill = () => {

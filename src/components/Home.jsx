@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaCalendarCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -7,12 +7,22 @@ import About from "./About";
 import Contact from "./Contact";
 import Image1 from "../assets/image1.jpg";
 import Image2 from "../assets/image2.jpg";
-import Auth from "../pages/Auth";
 import SignOut from "./SignOut";
-import { useSelector } from "react-redux";
 const Home = () => {
-  const { isAuth } = useSelector((store) => store.auth);
-  console.log(isAuth);
+  const [isTiltedFinane, setIsTiltedFinane] = useState(false);
+  const handleMouseEnterFinane = () => {
+    setIsTiltedFinane(true);
+  };
+  const handleMouseLeaveFinane = () => {
+    setIsTiltedFinane(false);
+  };
+  const [isTiltedGovern, setIsTiltedGovern] = useState(false);
+  const handleMouseEnterGovern = () => {
+    setIsTiltedGovern(true);
+  };
+  const handleMouseLeaveGovern = () => {
+    setIsTiltedGovern(false);
+  };
   return (
     <>
       <div className="py-6">
@@ -47,34 +57,50 @@ const Home = () => {
               今までに携わってきたプロジェクト
             </p>
             <div className="my-16 grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-6 z-20">
-              <Link
-                to="/projects"
-                state={{ state: "生命保険" }}
-                className="relative"
+              <div
+                onMouseEnter={handleMouseEnterFinane}
+                onMouseLeave={handleMouseLeaveFinane}
+                className={`transition-transform duration-300 ${
+                  isTiltedFinane ? "-rotate-1 " : ""
+                }`}
               >
-                <img
-                  src={Image1}
-                  alt=""
-                  className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
-                ></img>
-                <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50">
-                  金融系
-                </span>
-              </Link>
-              <Link
-                to="/projects"
-                state={{ state: "医療中間サーバ" }}
-                className="relative"
+                <Link
+                  to="/projects"
+                  state={{ state: "生命保険" }}
+                  className="relative"
+                >
+                  <img
+                    src={Image1}
+                    alt=""
+                    className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
+                  ></img>
+                  <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50">
+                    金融系
+                  </span>
+                </Link>
+              </div>
+              <div
+                onMouseEnter={handleMouseEnterGovern}
+                onMouseLeave={handleMouseLeaveGovern}
+                className={`transition-transform duration-300 ${
+                  isTiltedGovern ? "-rotate-1 " : ""
+                }`}
               >
-                <img
-                  src={Image2}
-                  alt=""
-                  className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
-                ></img>
-                <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50">
-                  官公庁系
-                </span>
-              </Link>
+                <Link
+                  to="/projects"
+                  state={{ state: "医療中間サーバ" }}
+                  className="relative"
+                >
+                  <img
+                    src={Image2}
+                    alt=""
+                    className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
+                  ></img>
+                  <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50">
+                    官公庁系
+                  </span>
+                </Link>
+              </div>
             </div>
           </section>
         </div>

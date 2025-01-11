@@ -138,8 +138,9 @@ const Todo = () => {
         <h2 className="secondary-title">カレンダー</h2>
         <p className="section-paragraph:"></p>
         <div className="m-12 flex items-center space-x-2">
-          <BiAnchor />
-          <h1 className="background-todo text-lg">To-do Calendar</h1>
+          {/* <BiAnchor /> */}
+          {/* <h1 className="background-todo text-lg">To-do Calendar</h1> */}
+          <h1 className="background-todo text-lg"></h1>
         </div>
 
         {/* カレンダー */}
