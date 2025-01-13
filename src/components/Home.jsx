@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCalendarCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -23,6 +23,30 @@ const Home = () => {
   const handleMouseLeaveGovern = () => {
     setIsTiltedGovern(false);
   };
+  // Safariの場合のみ要素を削除(ブラウザ間の非互換)
+  useEffect(() => {
+    if (
+      navigator.userAgent.includes("Safari") &&
+      !navigator.userAgent.includes("Chrome")
+    ) {
+      const element = document.querySelector(".safari-hiddenF");
+      if (element) {
+        element.remove();
+      }
+    }
+  }, []);
+  useEffect(() => {
+    if (
+      navigator.userAgent.includes("Safari") &&
+      !navigator.userAgent.includes("Chrome")
+    ) {
+      const element = document.querySelector(".safari-hiddenG");
+      if (element) {
+        element.remove();
+      }
+    }
+  }, []);
+
   return (
     <>
       <div className="py-6">
@@ -74,7 +98,7 @@ const Home = () => {
                     alt=""
                     className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
                   ></img>
-                  <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50">
+                  <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50 safari-hiddenF">
                     金融系
                   </span>
                 </Link>
@@ -96,7 +120,7 @@ const Home = () => {
                     alt=""
                     className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
                   ></img>
-                  <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50">
+                  <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50 safari-hiddenG">
                     官公庁系
                   </span>
                 </Link>

@@ -1,4 +1,3 @@
-import { BiAnchor } from "react-icons/bi";
 import BackButton from "../components/BackButton";
 import { cn, dayNames } from "../lib/utils";
 import { SiGoogletasks } from "react-icons/si";
@@ -95,8 +94,6 @@ const Todo = () => {
     };
     getTasks();
   }, []);
-
-  const [calendarTouched, setCalendarTouched] = useState(false);
 
   // 初期化
   let today = startOfToday();
@@ -216,20 +213,16 @@ const Todo = () => {
                           "bg-orange-50 rounded-lg"
                       )}
                     >
-                      <button
+                      <div
                         onClick={() => {
-                          setCalendarTouched(true);
                           setSelectedDay(day);
                         }}
                         className={cn(
-                          "w-12 h-12 flex flex-col p-2 justify-center items-center rounded-xl gap-0 group bg-gray-50 relative group",
+                          "w-12 h-12 flex flex-col p-2 justify-center items-center rounded-xl gap-0 group bg-gray-50 relative group cursor-default",
                           isEqual(day, selectedDay) &&
                             "bg-orange-100 text-slate-900 text-lg",
                           isEqual(today, day) && "text-blue-900 bg-blue-50",
-                          isBefore(day, today) &&
-                            "text-red-800 bg-red-50 cursor-not-allowed",
                           isEqual(today, day) && "text-blue-900 bg-blue-50",
-                          isBefore(day, today) && "cursor-not-allowed",
                           isEqual(day, selectedDay) &&
                             isToday(day) &&
                             "bg-blue-200",
@@ -274,12 +267,10 @@ const Todo = () => {
                         <CheckCircle2
                           className={cn(
                             "hidden",
-                            isEqual(day, selectedDay) &&
-                              "absolute block top-0 right-0 h-[18px] w-[18px] translate-x-1 -translate-y-1 text-orange-900",
                             isEqual(day, today) && "text-blue-900"
                           )}
                         />
-                      </button>
+                      </div>
                     </div>
                   );
                 })}

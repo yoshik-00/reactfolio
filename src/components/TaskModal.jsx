@@ -35,7 +35,10 @@ const TaskModal = ({ params }) => {
   return (
     <>
       {" "}
-      <button onClick={handleOpenModal} className="text-[0.5rem]">
+      <button
+        onClick={handleOpenModal}
+        className="text-[0.5rem] text-red-500 font-semibold"
+      >
         締切あり
       </button>
       <Modal
