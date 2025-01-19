@@ -1,35 +1,106 @@
 import BackButton from "../components/BackButton";
-import { BiAnchor } from "react-icons/bi";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Code, Server, Star, ExternalLink } from "lucide-react";
+import skillsData from "../skills.json";
 import { useLocation } from "react-router";
-import data from "../skills.json";
 
-// 正しい記述例
-const Skill = () => {
-  // const [header, setHeader] = useState();
+const SkillCard = ({ skill }) => {
   const location = useLocation();
   const header = location.state;
+  return (
+    <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+      {/* カードヘッダー */}
+      <div className="flex items-center mb-4">
+        <div className="flex-shrink-0 bg-blue-50 p-2 rounded-lg">
+          {header.state === "バックエンド" ? (
+            <Server className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
+          ) : (
+            <Code className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
+          )}
+        </div>
+        <h3 className="ml-3 text-base sm:text-lg font-semibold text-gray-800">
+          {skill.name}
+        </h3>
+      </div>
 
-  let contents = [];
-  if (header.state === "フロントエンド") {
-    contents = [
-      data.frontend.output.first,
-      data.frontend.output.second,
-      data.frontend.output.third,
-      data.frontend.level.first,
-      data.frontend.level.second,
-      data.frontend.level.third,
-    ];
-  } else if (header.state === "バックエンド") {
-    contents = [
-      data.backend.output.first,
-      data.backend.output.second,
-      data.backend.output.third,
-      data.backend.level.first,
-      data.backend.level.second,
-      data.backend.level.third,
-    ];
-  }
+      {/* スキルレベル */}
+      <div className="flex mb-3 space-x-1">
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            className={`w-4 h-4 ${
+              i < skill.level ? "text-yellow-400 fill-current" : "text-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* スキル詳細 */}
+      <div className="text-sm text-gray-600 flex-grow">
+        <div className="space-y-2">
+          <p className="flex items-center">
+            <span className="font-medium min-w-[5rem]">経験年数:</span>
+            <span className="ml-2">{skill.experience}</span>
+          </p>
+          <p className="flex items-start">
+            <span className="font-medium min-w-[5rem]">使用技術:</span>
+            <span className="ml-2">
+              {skill.details.split("\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </span>
+          </p>
+        </div>
+
+        <div className="mt-4">
+          <p className="font-medium mb-2">プロジェクト例:</p>
+          <ul className="list-disc list-inside space-y-1">
+            {skill.projects.map((project, index) => (
+              <li key={index} className="text-gray-700 text-sm">
+                {project.split("\n").map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* 詳細リンク */}
+      {skill.link && (
+        <div className="mt-4 pt-3 border-t border-gray-100">
+          <a
+            href={skill.link}
+            className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600"
+          >
+            詳細を見る
+            <ExternalLink className="w-4 h-4 ml-1" />
+          </a>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const Skills = () => {
+  const [activeCategory, setActiveCategory] = useState("frontend");
+  const categoryData = skillsData.categories[activeCategory];
+  const location = useLocation();
+  const header = location.state;
+  useEffect(() => {
+    if (header.state === "フロントエンド") {
+      setActiveCategory("frontend");
+    } else if (header.state === "バックエンド") {
+      setActiveCategory("backend");
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div
@@ -39,44 +110,33 @@ const Skill = () => {
       <section className="w-full">
         <h2 className="secondary-title">スキル</h2>
         <p className="section-paragraph:">私が習得したスキル</p>
-        <div className="m-12 flex items-center space-x-2">
-          <BiAnchor />
-
-          <h1 className="background-skill text-lg">{header.state}</h1>
-        </div>
-        <div className="items-center justify-center mt-24 grid grid-cols-1 grid-rows-8 gap-4 lg:grid lg:grid-cols-2 lg:grid-rows-4 lg:gap-4">
-          <div className="text-xl skill-cols order-1 lg:order-none lg:col-span-1 p-4 flex justify-center">
-            成果物
-          </div>
-          <div className="text-xl skill-cols order-5 lg:order-none lg:col-span-1 p-4 flex justify-center">
-            言語習得度
-          </div>
-          <div className="text-secondary skill-cols order-2 lg:order-none lg:col-span-1 p-4 flex justify-center">
-            {contents[0]}
-          </div>
-          <div className="text-secondary skill-cols order-6 lg:order-none lg:col-span-1 p-4 flex justify-center">
-            {contents[3]}
-          </div>
-          <div className="text-secondary skill-cols order-3 lg:order-none lg:col-span-1 p-4 flex justify-center">
-            {contents[1]}
-          </div>
-          <div className="text-secondary skill-cols order-7 lg:order-none lg:col-span-1 p-4 flex justify-center">
-            {contents[4]}
-          </div>
-          <div className="text-secondary skill-cols order-4 lg:order-none lg:col-span-1 p-4 flex justify-center">
-            {contents[2]}
-          </div>
-          <div className="text-secondary skill-cols order-8 lg:order-none lg:col-span-1 p-4 flex justify-center">
-            {contents[5]}
+        <div className="min-h-screen">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+            {/* カテゴリータブ */}
+            <div className="flex justify-center mb-8 sm:mb-12">
+              <nav className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"></nav>
+            </div>
+            {/* カテゴリー説明 */}
+            <div className="text-center mb-8 sm:mb-12">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-3">
+                {categoryData.title}
+              </h3>
+              <p className="text-secondary max-w-2xl mx-auto text-sm sm:text-base">
+                {categoryData.description}
+              </p>
+            </div>
+            {/* スキルグリッド */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+              {categoryData.skills.map((skill, index) => (
+                <SkillCard key={index} skill={skill} />
+              ))}
+            </div>
+            <BackButton />
           </div>
         </div>
-
-        {/* <GiAnchor /> */}
-
-        <BackButton />
       </section>
     </div>
   );
 };
 
-export default Skill;
+export default Skills;

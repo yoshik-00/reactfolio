@@ -9,20 +9,6 @@ import Image1 from "../assets/image1.jpg";
 import Image2 from "../assets/image2.jpg";
 import SignOut from "./SignOut";
 const Home = () => {
-  const [isTiltedFinane, setIsTiltedFinane] = useState(false);
-  const handleMouseEnterFinane = () => {
-    setIsTiltedFinane(true);
-  };
-  const handleMouseLeaveFinane = () => {
-    setIsTiltedFinane(false);
-  };
-  const [isTiltedGovern, setIsTiltedGovern] = useState(false);
-  const handleMouseEnterGovern = () => {
-    setIsTiltedGovern(true);
-  };
-  const handleMouseLeaveGovern = () => {
-    setIsTiltedGovern(false);
-  };
   // Safariの場合のみ要素を削除(ブラウザ間の非互換)
   useEffect(() => {
     if (
@@ -65,12 +51,14 @@ const Home = () => {
       </div>
 
       {/* body */}
-      <div className="font-NotoSerifJP bg-body text-black">
-        {/* background image*/}
-        <Background />
-        {/* about me*/}
-        <About />
-        {/* projects */}
+      <div className="font-NotoSerifJP text-black">
+        <div>
+          {/* background image*/}
+          <Background />
+          {/* about me*/}
+          <About />
+          {/* projects */}
+        </div>
         <div
           id="projects"
           className="container mt-64 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full"
@@ -81,13 +69,7 @@ const Home = () => {
               今までに携わってきたプロジェクト
             </p>
             <div className="my-16 grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-6 z-20">
-              <div
-                onMouseEnter={handleMouseEnterFinane}
-                onMouseLeave={handleMouseLeaveFinane}
-                className={`transition-transform duration-300 ${
-                  isTiltedFinane ? "-rotate-1 " : ""
-                }`}
-              >
+              <div className="shadow-sm hover:shadow-xl rounded-md transition-all duration-300">
                 <Link
                   to="/projects"
                   state={{ state: "生命保険" }}
@@ -98,18 +80,12 @@ const Home = () => {
                     alt=""
                     className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
                   ></img>
-                  <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50 safari-hiddenF">
+                  <span className="flex items-center justify-center absolute inset-0 w-full text-gray-200 text-6xl opacity-50 safari-hiddenF">
                     金融系
                   </span>
                 </Link>
               </div>
-              <div
-                onMouseEnter={handleMouseEnterGovern}
-                onMouseLeave={handleMouseLeaveGovern}
-                className={`transition-transform duration-300 ${
-                  isTiltedGovern ? "-rotate-1 " : ""
-                }`}
-              >
+              <div className="shadow-sm hover:shadow-xl rounded-md transition-all duration-300">
                 <Link
                   to="/projects"
                   state={{ state: "医療中間サーバ" }}
@@ -118,9 +94,9 @@ const Home = () => {
                   <img
                     src={Image2}
                     alt=""
-                    className="w-full h-36 lg:h-72 object-cover rounded-md cursor-pointer"
+                    className="w-full h-36 lg:h-72 object-top rounded-md cursor-pointer"
                   ></img>
-                  <span className="flex items-center justify-center absolute inset-0 w-full text-secondary text-6xl opacity-50 safari-hiddenG">
+                  <span className="flex items-center justify-center absolute inset-0 w-full text-gray-200 text-6xl opacity-50 safari-hiddenG">
                     官公庁系
                   </span>
                 </Link>
@@ -139,7 +115,7 @@ const Home = () => {
               私が習得したスキル
             </p>
             <div className="my-16 items-start">
-              <div className="w-full border border-body p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:border-black transition-all duration-300 cursor-pointer">
+              <div className="w-full shadow-md p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:shadow-xl rounded-md transition-all duration-300 cursor-pointer">
                 <Link to="/skills" state={{ state: "フロントエンド" }}>
                   <div className="text-center flex flex-wrap justify-center lg:text-left lg:block">
                     <h3 className="text-3xl font-semibold">
@@ -149,9 +125,9 @@ const Home = () => {
                       <tr className="h-15">
                         <th className="text-left py-4 pr-4">言語</th>
                         <td className="py-4 flex items-center flex-wrap gap-3">
-                          <div className="badge">JavaScript</div>
-                          <div className="badge">HTML</div>
-                          <div className="badge">CSS</div>
+                          <div className="badge font-bold">JavaScript</div>
+                          <div className="badge font-bold">HTML</div>
+                          <div className="badge font-bold">CSS</div>
                         </td>
                       </tr>
                       <tr className="h-15">
@@ -159,23 +135,22 @@ const Home = () => {
                           フレームワーク（ライブラリ）
                         </th>
                         <td className="py-4 flex items-center  flex-wrap gap-3">
-                          <div className="badge">tailwindcss</div>
-                          <div className="badge">react</div>
-                          <div className="badge">JSF</div>
-                          <div className="badge">JUnit</div>
+                          <div className="badge font-bold">Tailwind CSS</div>
+                          <div className="badge font-bold">react</div>
+                          <div className="badge font-bold">JSF</div>
                         </td>
                       </tr>
                       <tr className="h-15">
                         <th className="text-left py-4 pr-4">開発環境</th>
                         <td className="py-4 flex items-center  flex-wrap gap-3">
-                          <div className="badge">IntelliJ IDEA</div>
-                          <div className="badge">VSCode</div>
-                          <div className="badge">Docker</div>
+                          <div className="badge font-bold">IntelliJ IDEA</div>
+                          <div className="badge font-bold">VSCode</div>
+                          <div className="badge font-bold">Docker</div>
                         </td>
                       </tr>
                     </table>
                     <p className="text-secondary font-semibold">
-                      私は上記の技術経験があります。
+                      私は主に上記の技術経験があります。
                       <br />
                       詳細はクリックしてください。
                     </p>
@@ -183,7 +158,7 @@ const Home = () => {
                 </Link>
               </div>
 
-              <div className="w-full border border-body p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:border-black transition-all duration-300 cursor-pointer">
+              <div className="w-full shadow-md p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:shadow-xl rounded-md transition-all duration-300 cursor-pointer">
                 <Link to="/skills" state={{ state: "バックエンド" }}>
                   <div className="text-center flex flex-wrap justify-center lg:text-left lg:block">
                     <h3 className="text-3xl font-semibold">バックエンド開発</h3>
@@ -191,8 +166,9 @@ const Home = () => {
                       <tr className="h-15">
                         <th className="text-left py-4 pr-4">言語</th>
                         <td className="py-4 flex items-center flex-wrap gap-3">
-                          <div className="badge">Java</div>
-                          <div className="badge">SQL</div>
+                          <div className="badge font-bold">JavaScript</div>
+                          <div className="badge font-bold">Java</div>
+                          <div className="badge font-bold">SQL</div>
                         </td>
                       </tr>
                       <tr className="h-15">
@@ -200,23 +176,22 @@ const Home = () => {
                           フレームワーク（ライブラリ）
                         </th>
                         <td className="py-4 flex items-center  flex-wrap gap-3">
-                          <div className="badge">Node.js</div>
-                          <div className="badge">JSF</div>
-                          <div className="badge">Hibernate</div>
+                          <div className="badge font-bold">Node.js</div>
+                          <div className="badge font-bold">JSF</div>
+                          <div className="badge font-bold">Hibernate</div>
                         </td>
                       </tr>
                       <tr className="h-15">
                         <th className="text-left py-4 pr-4">開発環境</th>
                         <td className="py-4 flex items-center  flex-wrap gap-3">
-                          <div className="badge">Oracle Database</div>
-                          <div className="badge">PostgreSQL</div>
-                          <div className="badge">Amazon EC2</div>
-                          <div className="badge">Postman</div>
+                          <div className="badge font-bold">SpringFramework</div>
+                          <div className="badge font-bold">PostgreSQL</div>
+                          <div className="badge font-bold">AWSクラウド</div>
                         </td>
                       </tr>
                     </table>
                     <p className="text-secondary font-semibold">
-                      私は上記の技術経験があります。
+                      私は主に上記の技術経験があります。
                       <br />
                       詳細はクリックしてください。
                     </p>
@@ -246,6 +221,4 @@ const Home = () => {
     </>
   );
 };
-
-// export default withAuthenticator(Home, { socialProviders: ["google"] });
 export default Home;

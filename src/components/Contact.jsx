@@ -12,13 +12,11 @@ const Contact = () => {
     reset,
   } = useForm({ mode: "onChange" });
 
-  //type
   const [selectedOption, setSelectedOption] = useState("");
   const [error, setError] = useState(false);
   const handleSelectChange = (event) => {
     const value = event.target.value;
     setSelectedOption(value);
-    // 「選択してください」が選択された場合、エラーを表示
     if (value === "") {
       setError(true);
     } else {
@@ -29,7 +27,6 @@ const Contact = () => {
   //submit
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       const response = await fetch(`${url}/notion/form`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -37,10 +34,8 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        console.log(response);
         alert("フォームが正常に送信されました");
       } else {
-        console.log(response);
         alert("送信中にエラーが発生しました");
       }
     } catch (error) {
@@ -74,32 +69,6 @@ const Contact = () => {
             action=""
             method="POST"
           >
-            {/* <div>
-              <label
-                className="text-black block mb-6 text-xl font-bold"
-                for="type"
-              >
-                お問い合わせの種類<span className="text-red-700"> *</span>
-              </label>
-              <select
-                id="type"
-                value={selectedOption}
-                onChange={handleSelectChange}
-                className="rounded-md w-full border-black bg-white pw-4 py-4"
-              >
-                <option value="" selected>
-                  選択してください
-                </option>
-                <option>当サイトの内容について</option>
-                <option>経歴について</option>
-                <option>その他</option>
-              </select>
-              {error && (
-                <p className="text-red-700">
-                  お問い合わせの種類を選択してください。
-                </p>
-              )}
-            </div> */}
             <div>
               <label className="text-black block mb-6 text-xl font-bold">
                 お名前<span className="text-red-700"> *</span>

@@ -1,27 +1,124 @@
 {
-  "frontend": {
-    "output": {
-      "first": "生命保険生命保険支払い業務アプリ1",
-      "second": "生命保険生命保険支払い業務アプリ2",
-      "third": "生命保険生命保険支払い業務アプリ3"
+  "categories": {
+    "frontend": {
+      "title": "フロントエンド",
+      "icon": "frontend-icon",
+      "description": "モダンで汎用性の高い技術スタック",
+      "skills": [
+        {
+          "name": "HTML・CSS",
+          "level": 3,
+          "experience": "1年",
+          "projects": [
+            "ポートフォリオ",
+            "かんぽ生命保険―支払業務システム（IE→Edge更改対応）",
+            "医療中間サーバー―解除登録受付結果画面"
+          ],
+          "details": "マークアップ記法, \n タグベース記法, \n アニメーションとトランジション, \n フレックスボックスとグリッドレイアウト, \n セレクタ（DOM操作）"
+        },
+        {
+          "name": "JavaScript",
+          "level": 4,
+          "experience": "1年",
+          "projects": [
+            "ポートフォリオ",
+            "かんぽ生命保険―支払業務システム（IE→Edge更改対応）"
+          ],
+          "details": "型安全性, \n DOM操作, \n イベントハンドリング, \n 非同期処理, \n モジュール管理（ES6以降）"
+        },
+        {
+          "name": "React",
+          "level": 4,
+          "experience": "0.5年",
+          "projects": ["ポートフォリオ"],
+          "details": "Hooks, Redux, \n React Router, \n React Hook Form, \n React.Memo, React.Ref, React.Effect, jsx記法, Vite"
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": 4,
+          "experience": "0.5年",
+          "projects": ["ポートフォリオ"],
+          "details": "カスタムコンポーネント（CSSの切り出し）, \n アニメーション, \n レスポンシブデザイン"
+        },
+        {
+          "name": "XHTML",
+          "level": 2,
+          "experience": "1年",
+          "projects": [
+            "医療中間サーバー―解除登録受付結果画面",
+            "その他保守開発画面"
+          ],
+          "details": "XMLベース記法, \n アニメーション, \n レスポンシブデザイン"
+        }
+      ]
     },
-    "level": {
-      "first": "level1",
-      "second": "level1",
-      "third": "level1"
-    }
-  },
-
-  "backend": {
-    "output": {
-      "first": "バックエンド1",
-      "second": "バックエンド2",
-      "third": "バックエンド3"
-    },
-    "level": {
-      "first": "level1",
-      "second": "level1",
-      "third": "level1"
+    "backend": {
+      "title": "バックエンド",
+      "icon": "backend-icon",
+      "description": "汎用性の高い技術スタックとRestfulなAPI設計",
+      "skills": [
+        {
+          "name": "Node.js",
+          "level": 3,
+          "experience": "0.5年",
+          "projects": ["ポートフォリオ"],
+          "details": "Express（middleware）, \n npm（依存関係、パッケージ管理）, \n イベント駆動"
+        },
+        {
+          "name": "Java",
+          "level": 3,
+          "experience": "2年",
+          "projects": [
+            "医療中間サーバー―解除登録受付結果画面",
+            "医療中間サーバー一斉通知バッチ",
+            "その他保守開発画面"
+          ],
+          "details": "JSF（View-managedBean-logicのMVCモデル）, \n Hibernate（エンティティマネージャーとアノテーションによるORM）, \n Spring Framework（かんぽ生命保険の現場にてオフショア開発のレビューの経験のみ）, \n JUnit（単体テスト） "
+        },
+        {
+          "name": "SQL",
+          "level": 4,
+          "experience": "3年",
+          "projects": ["保守対応全般（本番環境での作業含む）"],
+          "details": "PostgreSQL, OracleDB",
+          "icon": "sql-icon"
+        },
+        {
+          "name": "Notion DB",
+          "level": 3,
+          "experience": "0.5年",
+          "projects": ["ポートフォリオ"],
+          "details": "Postman, NoionAPI"
+        },
+        {
+          "name": "各種AWSクラウド",
+          "level": 4,
+          "experience": "0.5年",
+          "projects": ["ポートフォリオ", "医療中間サーバー―保守開発"],
+          "details": "Amazon S3（医療中間サーバー―保守開発にて構築済みのS3バケットを使用）, \n EC2, \n AWS Amplify（フロントエンドのCI/CDの構築に使用）, \n AWS Cognito（認証機能の構築に使用）, \n  AWS ACM（ssl証明書作成）,  \n AWS Route 53（ホストゾーン作成）,  \nAWS ALB"
+        },
+        {
+          "name": "Git",
+          "level": 4,
+          "experience": "1年",
+          "projects": ["ポートフォリオ", "医療中間サーバー"],
+          "details": "Git CLI（医療中間サーバーにてGit bashで使用）,\n SourceTree（リポジトリ管理）, \n GitLab, \n GitHub"
+        },
+        {
+          "name": "Docker",
+          "level": 2,
+          "experience": "1年",
+          "projects": ["医療中間サーバー-保守開発（単体環境動作確認）"],
+          "details": "Docker compose, \n Docler Desktop"
+        },
+        {
+          "name": "Nginx",
+          "level": 3,
+          "experience": "0.5年",
+          "projects": ["ポートフォリオ"],
+          "details": "リバースプロキシ, \n webサーバー"
+        }
+      ]
     }
   }
 }
