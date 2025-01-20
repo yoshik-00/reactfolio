@@ -2,7 +2,7 @@ import { useLocation } from "react-router";
 import BackButton from "../components/BackButton";
 import { BiAnchor } from "react-icons/bi";
 import data from "../projects.json";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   YamanoteLineToOosaki,
   YamanoteLineToHamamatsucho,
@@ -12,8 +12,10 @@ const Project = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const location = useLocation();
   const header = location.state || {};
+
   let contents = [];
   if (header.state === "医療中間サーバ") {
     contents = [
@@ -30,79 +32,94 @@ const Project = () => {
       data.finance.env,
     ];
   }
+
   return (
-    <>
-      <div
-        id="projects"
-        className="container mt-12 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full"
-      >
-        <section className="w-full">
-          <h2 className="secondary-title">プロジェクト</h2>
-          <p className="section-paragraph:">今まで携わったプロジェクト</p>
-          <div className="m-3">
+    <div className="min-h-screen w-full">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section className="space-y-6">
+          <div>
+            <h2 className="secondary-title">プロジェクト</h2>
+            <p className="section-paragraph">今まで携わったプロジェクト</p>
+          </div>
+
+          <div className="p-4">
             <div className="flex items-center space-x-2">
-              <BiAnchor />
-              <h1 className="background-project text-lg my-12">
-                {header.state}
-              </h1>
+              <BiAnchor className="flex-shrink-0" />
+              <h1 className="background-project text-lg">{header.state}</h1>
             </div>
           </div>
-          <div className="mt-12 grid grid-cols-10">
-            <div className="col-span-4">
-              <div className="m-4 mt-12 text-md font-bold text-left h-full min-h-[100px]">
-                期間
-                <div className="text-secondary text-lg text-left p-3">
-                  {contents[0].split("\n").map((line, index) => (
-                    <React.Fragment key={index}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
+
+          <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
+            {/* Left Column */}
+            <div className="lg:col-span-4 space-y-6">
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-bold text-lg mb-2">期間</h3>
+                  <div className="text-secondary text-base sm:text-lg">
+                    {contents[0].split("\n").map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </div>
                 </div>
-                役割
-                <div className="text-secondary  text-lg text-left p-3">
-                  {contents[2].split("\n").map((line, index) => (
-                    <React.Fragment key={index}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
+
+                <div>
+                  <h3 className="font-bold text-lg mb-2">役割</h3>
+                  <div className="text-secondary text-base sm:text-lg">
+                    {contents[2].split("\n").map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </div>
                 </div>
-                開発環境
-                <div className="text-secondary  text-lg text-left p-3">
-                  {contents[3].split("\n").map((line, index) => (
-                    <React.Fragment key={index}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
+
+                <div>
+                  <h3 className="font-bold text-lg mb-2">開発環境</h3>
+                  <div className="text-secondary text-base sm:text-lg">
+                    {contents[3].split("\n").map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-            <div className=" col-span-6">
+
+            {/* Right Column */}
+            <div className="lg:col-span-6">
               {header.state === "医療中間サーバ" && (
                 <YamanoteLineToHamamatsucho />
               )}
               {header.state === "生命保険" && <YamanoteLineToOosaki />}
             </div>
           </div>
-          <div className="">
-            <div className="m-4 -mt-10 text-md font-bold text-left h-full min-h-[100px]">
-              業務内容
-              <div className="text-secondary  text-lg text-left p-3">
-                {contents[1].split("\n").map((line, index) => (
-                  <React.Fragment key={index}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </div>
+
+          {/* Bottom */}
+          <div className="mt-8">
+            <h3 className="font-bold text-lg mb-2">業務内容</h3>
+            <div className="text-secondary text-base sm:text-lg">
+              {contents[1].split("\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </div>
           </div>
-          <BackButton />
+
+          <div className="mt-8">
+            <BackButton />
+          </div>
         </section>
       </div>
-    </>
+    </div>
   );
 };
+
 export default Project;

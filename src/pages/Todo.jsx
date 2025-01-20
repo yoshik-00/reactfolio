@@ -141,14 +141,14 @@ const Todo = () => {
         </div>
 
         {/* カレンダー */}
-        <div className="flex flex-col min-h-screen justify-center items-center gap-2 bg-stone-50">
+        <div className="flex flex-col min-h-screen rounded-md justify-center items-center gap-2 bg-stone-50">
           <div
             className={cn("flex flex-col gap-2 justify-center items-center")}
           >
             <span className="mx-8 text-md sm:text-lg text-secondary font-serif font-semibold px-2">
               私の月別スケジュールです。
               <br />
-              NOTIONとAPIで連携しており開発スケジュールや研修の日程等をスマホからも管理できるようにしています。
+              NOTIONと連携しており開発スケジュールや研修の日程等をスマホからでも管理できるようにしています。
             </span>
           </div>
 

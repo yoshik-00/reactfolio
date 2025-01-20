@@ -7,21 +7,20 @@ import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import Todo from "./pages/Todo";
 import Auth from "./pages/Auth";
-import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 const App = () => {
   const { isAuth } = useSelector((store) => store.auth);
   return (
     <Routes>
-      {/* 未認証 */}
+      {/* unauthenticated */}
       {!isAuth ? (
         <>
           <Route path="/*" element={<Auth />} />
         </>
       ) : (
         <>
-          {/* 認証済 */}
+          {/* authenticated */}
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/skills" element={<Skills />} />

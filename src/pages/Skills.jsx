@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Code, Server, Star, ExternalLink } from "lucide-react";
 import skillsData from "../skills.json";
 import { useLocation } from "react-router";
+import SkillsModal from "../components/SkillsModal";
 
 const SkillCard = ({ skill }) => {
   const location = useLocation();
   const header = location.state;
   return (
     <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-      {/* カードヘッダー */}
+      {/* card header */}
       <div className="flex items-center mb-4">
         <div className="flex-shrink-0 bg-blue-50 p-2 rounded-lg">
           {header.state === "バックエンド" ? (
@@ -23,7 +24,7 @@ const SkillCard = ({ skill }) => {
         </h3>
       </div>
 
-      {/* スキルレベル */}
+      {/* skill level */}
       <div className="flex mb-3 space-x-1">
         {[...Array(5)].map((_, i) => (
           <Star
@@ -35,7 +36,7 @@ const SkillCard = ({ skill }) => {
         ))}
       </div>
 
-      {/* スキル詳細 */}
+      {/* skill detail */}
       <div className="text-sm text-gray-600 flex-grow">
         <div className="space-y-2">
           <p className="flex items-center">
@@ -62,7 +63,11 @@ const SkillCard = ({ skill }) => {
               <li key={index} className="text-gray-700 text-sm">
                 {project.split("\n").map((line, index) => (
                   <React.Fragment key={index}>
-                    {line}
+                    {line === "医療中間サーバー―解除登録受付結果画面" ? (
+                      <SkillsModal param={line} />
+                    ) : (
+                      line
+                    )}
                     <br />
                   </React.Fragment>
                 ))}
@@ -71,19 +76,6 @@ const SkillCard = ({ skill }) => {
           </ul>
         </div>
       </div>
-
-      {/* 詳細リンク */}
-      {skill.link && (
-        <div className="mt-4 pt-3 border-t border-gray-100">
-          <a
-            href={skill.link}
-            className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600"
-          >
-            詳細を見る
-            <ExternalLink className="w-4 h-4 ml-1" />
-          </a>
-        </div>
-      )}
     </div>
   );
 };
@@ -112,11 +104,7 @@ const Skills = () => {
         <p className="section-paragraph:">私が習得したスキル</p>
         <div className="min-h-screen">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-            {/* カテゴリータブ */}
-            <div className="flex justify-center mb-8 sm:mb-12">
-              <nav className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"></nav>
-            </div>
-            {/* カテゴリー説明 */}
+            {/* category */}
             <div className="text-center mb-8 sm:mb-12">
               <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-3">
                 {categoryData.title}
@@ -125,7 +113,7 @@ const Skills = () => {
                 {categoryData.description}
               </p>
             </div>
-            {/* スキルグリッド */}
+            {/* skill grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {categoryData.skills.map((skill, index) => (
                 <SkillCard key={index} skill={skill} />

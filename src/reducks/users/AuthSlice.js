@@ -1,23 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-//認証情報の初期化
+//initial
 const initialState = {
-  isAuth: false, //認証済みかどうか
-  user: undefined, // ユーザー情報（Cognitoから取得）
-  //   token: null, // アクセストークンまたはIDトークン
-  //   loading: false, // 認証リクエスト中かどうか
+  isAuth: false,
+  user: undefined,
+  //   token: null,
+  //   loading: false,
   //   error: null,
 };
-
-// const signOutRedirect = () => {
-//   const clientId = "6ehpfv3e4jalpbuvbploov12qh";
-//   const logoutUri = "http://localhost:5173/Auth";
-//   const cognitoDomain =
-//     "https://ap-northeast-1wfzavgr0h.auth.ap-northeast-1.amazoncognito.com";
-//   window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
-//     logoutUri
-//   )}`;
-// };
 
 export const asyncSignOut = createAsyncThunk("signout", async (_, thunkAPI) => {
   try {
@@ -28,19 +18,17 @@ export const asyncSignOut = createAsyncThunk("signout", async (_, thunkAPI) => {
 });
 
 const authSlice = createSlice({
-  //nameはuseSelectorからアクセスする時の名前
+  //The name used to access data from useSelector
   name: "auth",
-  //stateのこと
+  //state
   initialState,
-  //以下のreducersの中にactioncreaterが含まれる
+  //Includes the action creator following reducers
   reducers: {
-    //サインイン
-    //reducerとして定義されているが以下はaction(=dispatchとして通知するもの)
+    //action(=notify as dispatch)
     signIn: (state) => {
       state.isAuth = true;
     },
-    //サインアウト
-    //reducerとして定義されているが以下はaction(=dispatchとして通知するもの)
+    //action(=notify as dispatch)
     signOut: (state) => {
       state.isAuth = false;
     },

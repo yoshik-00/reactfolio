@@ -18,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     document.addEventListener("mousedown", OutsideClick);
     return () => {
-      // クリーンアップ
+      // clean up
       document.removeEventListener("mousedown", OutsideClick);
     };
   }, []);
@@ -68,8 +68,6 @@ const Navbar = () => {
           type="button"
           className="fixed top-6 right-6 z-10"
         >
-          {/* <i id={bars} className="fa-solid fa-bars"></i> */}
-          {/* <img src="../assets/bars.svg" /> */}
           <FaBars />
         </button>
       </div>

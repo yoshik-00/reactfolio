@@ -58,7 +58,7 @@ export const YamanoteLineToOosaki = () => {
         onMouseEnter={handleMouseEnter}
       >
         <svg width="540" height="300" className="ml-20 mb-10">
-          {/* 半円の線路 */}
+          {/* circle train track */}
           <path
             d={`M ${centerX - radius} ${centerY} A ${radius} ${radius} 0 1 1 ${
               centerX + radius
@@ -74,7 +74,7 @@ export const YamanoteLineToOosaki = () => {
             className="stroke-2 stroke-green-100"
           />
 
-          {/* 駅 */}
+          {/* station */}
           {stations.map((station) => {
             const pos = getCoordinates(station.angle);
             const isTop = station.angle > 90;
@@ -86,11 +86,11 @@ export const YamanoteLineToOosaki = () => {
                   r="12"
                   className="fill-white shadow-sm"
                 />
-                {/* 駅のピン */}
+                {/* station pin */}
                 <g transform={`translate(${pos.x - 8}, ${pos.y - 8})`}>
                   <MapPin size={16} style={{ color: station.color }} />
                 </g>
-                {/* 駅名背景 */}
+                {/* station bg */}
                 <rect
                   x={pos.x - 30}
                   y={isTop ? pos.y - 35 : pos.y + 15}
@@ -99,7 +99,7 @@ export const YamanoteLineToOosaki = () => {
                   rx="10"
                   className="fill-white/90"
                 />
-                {/* 駅名 */}
+                {/* station name */}
                 <text
                   x={pos.x}
                   y={isTop ? pos.y - 20 : pos.y + 30}
@@ -112,7 +112,7 @@ export const YamanoteLineToOosaki = () => {
             );
           })}
 
-          {/* 電車 */}
+          {/* train */}
           <g
             transform={`translate(${trainPos.x}, ${trainPos.y}) rotate(${
               90 - trainAngle
@@ -217,7 +217,7 @@ export const YamanoteLineToHamamatsucho = () => {
             className="stroke-2 stroke-green-100"
           />
 
-          {/* 駅 */}
+          {/* station */}
           {stations.map((station) => {
             const pos = getCoordinates(station.angle);
             const isTop = station.angle > 90;
@@ -229,11 +229,11 @@ export const YamanoteLineToHamamatsucho = () => {
                   r="12"
                   className="fill-white shadow-sm"
                 />
-                {/* 駅のピン */}
+                {/* station pin */}
                 <g transform={`translate(${pos.x - 8}, ${pos.y - 8})`}>
                   <MapPin size={16} style={{ color: station.color }} />
                 </g>
-                {/* 駅名背景 */}
+                {/* station bg */}
                 <rect
                   x={pos.x - 30}
                   y={isTop ? pos.y - 35 : pos.y + 15}
@@ -242,7 +242,7 @@ export const YamanoteLineToHamamatsucho = () => {
                   rx="10"
                   className="fill-white/90"
                 />
-                {/* 駅名 */}
+                {/* station name */}
                 <text
                   x={pos.x}
                   y={isTop ? pos.y - 20 : pos.y + 30}
@@ -255,7 +255,7 @@ export const YamanoteLineToHamamatsucho = () => {
             );
           })}
 
-          {/* 電車 */}
+          {/* train */}
           <g
             transform={`translate(${trainPos.x}, ${trainPos.y}) rotate(${
               90 - trainAngle

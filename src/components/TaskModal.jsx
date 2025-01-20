@@ -7,15 +7,17 @@ const TaskModal = ({ params }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpenModal = () => {
     setIsOpen(true);
+    document.body.style.overflow = "hidden";
   };
   const handleCloseModal = () => {
     setIsOpen(false);
+    document.body.style.overflow = "auto";
   };
 
   const selectedDate = params.selectedDate;
   const taskDeadline = params.deadline;
   const [isMultiTasks, setIsMultiTasks] = useState(false);
-  //タスクの期日と選択日が同じ日が複数あった場合
+  //If there are multiple tasks with the same due date and selected date
   useEffect(() => {
     const matchingTasksCount = taskDeadline.filter(
       (date) => date === selectedDate
@@ -24,7 +26,7 @@ const TaskModal = ({ params }) => {
     setIsMultiTasks(matchingTasksCount > 1);
   }, [taskDeadline, selectedDate]);
 
-  //タスクの期日と選択日が同じ日のインデックスを取得
+  //Get the index of tasks with the same due date and selected date
   const getMatchingIndex = () => {
     return taskDeadline
       .map((value, index) => (value === selectedDate ? index : -1))
@@ -76,7 +78,6 @@ const TaskModal = ({ params }) => {
               </span>
             </div>
           </div>
-          {/* 2つ目(期日と選択日が同じ日が複数ある場合) */}
           <div
             className={
               isMultiTasks ? "space-y-3 mb-6" : "space-y-3 mb-6 hidden"
@@ -110,7 +111,6 @@ const TaskModal = ({ params }) => {
 
           <div className="flex justify-end">
             <button
-              // className="flex items-center my-8 bg-badge text-black px-4 py-2 rounded shadow hover:bg-slate-700  "
               className="flex items-center my-8 text-black px-4 py-2 hover:text-selectedText transition-all duration-300"
               onClick={handleCloseModal}
             >

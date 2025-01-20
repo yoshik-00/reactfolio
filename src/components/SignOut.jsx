@@ -21,9 +21,7 @@ const SignOut = () => {
   const handleSignOut = async () => {
     try {
       const result = await dispatch(asyncSignOut());
-      // console.log(result);
       if (asyncSignOut.fulfilled.match(result)) {
-        // console.log(auth.isAuthenticated);
         await auth.removeUser().then(signOutRedirect());
       } else {
         console.error("Sign out failed:", result.error.message);

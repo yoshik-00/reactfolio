@@ -9,7 +9,7 @@ import Image1 from "../assets/image1.jpg";
 import Image2 from "../assets/image2.jpg";
 import SignOut from "./SignOut";
 const Home = () => {
-  // Safariの場合のみ要素を削除(ブラウザ間の非互換)
+  // only in Safari (browser incompatibility)
   useEffect(() => {
     if (
       navigator.userAgent.includes("Safari") &&
@@ -38,7 +38,7 @@ const Home = () => {
       <div className="py-6">
         <div className="container mx-auto flex justify-between items-center px-8 md:px-14 lg:px-24 w-full">
           <div className="text-lg font-bold items-center">
-            {/* <Todo /> */}
+            {/* Todo */}
             <Link
               to="/todo"
               className="hover:text-selectedText transition-all duration-300"

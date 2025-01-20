@@ -8,7 +8,7 @@ export default {
         body: "#ebe7e0",
         //選択時の色
         selectedText: "#A9A9A9",
-        secondary: "#9191A4",
+        secondary: "#7F7F8F",
         badge: "#5b7f8d",
         inputBorder: "#565666",
         input: "#2A2A2A",
