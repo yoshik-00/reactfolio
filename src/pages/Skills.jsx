@@ -1,7 +1,7 @@
 import BackButton from "../components/BackButton";
 import React, { useEffect, useState } from "react";
 import { Code, Server, Star, ExternalLink } from "lucide-react";
-import skillsData from "../skills.json";
+import skillsData from "../assets/data/skills.json";
 import { useLocation } from "react-router";
 import SkillsModal from "../components/SkillsModal";
 

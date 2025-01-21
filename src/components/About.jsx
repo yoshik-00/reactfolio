@@ -1,4 +1,4 @@
-import about from "../about.json";
+import about from "../assets/data/about.json";
 const About = () => (
   <div
     id="about"

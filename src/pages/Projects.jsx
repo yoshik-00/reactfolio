@@ -1,7 +1,7 @@
 import { useLocation } from "react-router";
 import BackButton from "../components/BackButton";
 import { BiAnchor } from "react-icons/bi";
-import data from "../projects.json";
+import data from "../assets/data/projects.json";
 import React, { useEffect } from "react";
 import {
   YamanoteLineToOosaki,
