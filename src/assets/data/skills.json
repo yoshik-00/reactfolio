@@ -102,7 +102,7 @@
           "level": 4,
           "experience": "0.5年",
           "projects": ["ポートフォリオ", "医療中間サーバー―保守開発"],
-          "details": "Amazon S3（医療中間サーバー―保守開発にて構築済みのS3バケットを使用）, \n EC2, \n AWS Amplify（フロントエンドのCI/CDの構築に使用）, \n AWS Cognito（認証機能の構築に使用）, \n  AWS ACM（ssl証明書作成）,  \n AWS Route 53（ホストゾーン作成）,  \nAWS ALB"
+          "details": "Amazon S3（医療中間サーバー―保守開発にて構築済みのS3バケットを使用）, \n EC2, \n AWS Amplify（フロントエンドのCI/CDの構築に使用）, \n AWS Cognito（認証機能の構築に使用）, \n  AWS ACM（ssl証明書作成）,  \n AWS Route 53（ホストゾーン作成）,  \n AWS ALB \n AWS App Runner "
         },
         {
           "name": "Git",

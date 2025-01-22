@@ -20,12 +20,11 @@ import {
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState, useEffect } from "react";
 import TaskModal from "../components/TaskModal";
-import { API_URL } from "../lib/url";
+import { API_URL } from "../lib/config";
 
 const url = API_URL;
-
 const Todo = () => {
-  //優先Taskを取得
+  //get priority tasks
   const [primaryTasks, setprimaryTasks] = useState([]);
   useEffect(() => {
     const getPrimaryTasks = async () => {
@@ -44,7 +43,7 @@ const Todo = () => {
     getPrimaryTasks();
   }, []);
 
-  //Taskを全取得
+  //get all tasks
   const [tasks, setTasks] = useState([]);
   const [taskDates, setTaskDates] = useState([]);
   const [priorities, setpriorities] = useState([]);
@@ -60,25 +59,25 @@ const Todo = () => {
         });
         const data = await response.json();
 
-        //締切日取得
+        //get deadline date
         const dates = data.results.map(
           (task) => task.properties.Deadline?.date?.start || "未記入"
         );
         setTaskDates(dates);
 
-        //タスク名取得
+        //get tasks name
         const taskName = data.results.map(
           (task) => task.properties.Task?.rich_text[0]?.plain_text || "未記入"
         );
         setTasks(taskName);
 
-        //優先度取得
+        //get priority
         const priority = data.results.map(
           (task) => task.properties.Priority?.status.name || "未記入"
         );
         setpriorities(priority);
 
-        //記入日取得
+        //get entry date
         const fillingDate = data.results.map(
           (task) => task.created_time || "未記入"
         );
@@ -95,13 +94,13 @@ const Todo = () => {
     getTasks();
   }, []);
 
-  // 初期化
+  //initialize
   let today = startOfToday();
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
   let [selectedDay, setSelectedDay] = useState(today);
   let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
 
-  //当月の日付を保持
+  //memo current month’s dates
   let days = useMemo(
     () =>
       eachDayOfInterval({
@@ -111,17 +110,17 @@ const Todo = () => {
     [firstDayCurrentMonth]
   );
 
-  //先月ボタン押下後
+  //last month buttom
   const prevMonth = () => {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
   };
-  //翌月ボタン押下後
+  //next month buttom
   const nextMonth = () => {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
   };
-  //タスクがある日
+  //hastask
   const hasTask = (day) => {
     return taskDates.some((element) => element === day);
   };
@@ -135,12 +134,10 @@ const Todo = () => {
         <h2 className="secondary-title">カレンダー</h2>
         <p className="section-paragraph:"></p>
         <div className="m-12 flex items-center space-x-2">
-          {/* <BiAnchor /> */}
-          {/* <h1 className="background-todo text-lg">To-do Calendar</h1> */}
           <h1 className="background-todo text-lg"></h1>
         </div>
 
-        {/* カレンダー */}
+        {/* calendar */}
         <div className="flex flex-col min-h-screen rounded-md justify-center items-center gap-2 bg-stone-50">
           <div
             className={cn("flex flex-col gap-2 justify-center items-center")}
@@ -153,7 +150,7 @@ const Todo = () => {
           </div>
 
           <div className="flex flex-col gap-2 h-[450px] w-[380px] mt-12">
-            {/* ヘッダー */}
+            {/* header */}
             <div className="grid grid-cols-3">
               <button
                 type="button"
@@ -180,7 +177,7 @@ const Todo = () => {
               </button>
             </div>
 
-            {/* ボディ */}
+            {/* body */}
             <div>
               <div className="grid grid-cols-7 mt-4">
                 {dayNames.map((day, i) => {
@@ -200,7 +197,7 @@ const Todo = () => {
                   );
                 })}
               </div>
-              {/* 各日をmapで生成 */}
+              {/* each day */}
               <div className="grid grid-cols-7 text-sm">
                 {days.map((day, dayIdx) => {
                   return (
@@ -248,7 +245,7 @@ const Todo = () => {
                           {format(day, "d")}
                         </time>
 
-                        {/* taskがある場合*/}
+                        {/* hastask*/}
                         {hasTask(format(day, "yyyy-MM-dd")) && (
                           <>
                             {

@@ -5,12 +5,16 @@ import { AuthProvider } from "react-oidc-context";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./reducks/store/store.js";
+import { AUTHORITY, CLIENT_ID, REDIRECT_URI } from "./lib/config.js";
+
+const authority = AUTHORITY;
+const clientId = CLIENT_ID;
+const redirectUri = REDIRECT_URI;
 
 const cognitoAuthConfig = {
-  authority:
-    "https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_wfzavgr0h",
-  client_id: "6ehpfv3e4jalpbuvbploov12qh",
-  redirect_uri: "http://localhost:5173/",
+  authority: authority,
+  client_id: clientId,
+  redirect_uri: redirectUri,
   response_type: "code",
   scope: "openid email",
 };

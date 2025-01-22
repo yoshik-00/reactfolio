@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { API_URL } from "../lib/url";
-const url = API_URL;
+import { API_URL } from "../lib/config";
 
+const url = API_URL;
 const Contact = () => {
   //hook form
   const {
