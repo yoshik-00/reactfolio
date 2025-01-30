@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { useEffect, useState } from "react";
 import { TiArrowBack } from "react-icons/ti";
 
-const TaskModal = ({ params }) => {
+const TasksModal = ({ params }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpenModal = () => {
     setIsOpen(true);
@@ -124,4 +124,4 @@ const TaskModal = ({ params }) => {
   );
 };
 
-export default TaskModal;
+export default TasksModal;

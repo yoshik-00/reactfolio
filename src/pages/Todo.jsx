@@ -19,7 +19,7 @@ import {
 } from "date-fns";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState, useEffect } from "react";
-import TaskModal from "../components/TaskModal";
+import TasksModal from "../components/TasksModal";
 import { API_URL } from "../lib/config";
 
 const url = API_URL;
@@ -249,7 +249,7 @@ const Todo = () => {
                         {hasTask(format(day, "yyyy-MM-dd")) && (
                           <>
                             {
-                              <TaskModal
+                              <TasksModal
                                 params={{
                                   selectedDate: format(day, "yyyy-MM-dd"),
                                   taskName: tasks,
