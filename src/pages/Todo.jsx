@@ -152,18 +152,8 @@ const Todo = () => {
           <div className="flex flex-col gap-2 h-[450px] w-[380px] mt-12">
             {/* header */}
             <div className="grid grid-cols-3">
-              <button
-                type="button"
-                onClick={prevMonth}
-                disabled={isThisMonth(new Date(currentMonth))}
-              >
-                <ChevronLeft
-                  size={20}
-                  aria-hidden="true"
-                  className={cn(
-                    isThisMonth(new Date(currentMonth)) && "text-gray-300"
-                  )}
-                />
+              <button type="button" onClick={prevMonth}>
+                <ChevronLeft size={20} aria-hidden="true" />
               </button>
               <h2 className="font-semibold text-orange-950 justify-center flex">
                 {format(firstDayCurrentMonth, " MMMM yyyy")}
