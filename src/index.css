@@ -36,10 +36,10 @@ body {
 .background-project::before {
   content: "PROJECT";
   -webkit-text-stroke: 1px rgb(128, 96, 96);
-  @apply font-serif absolute right-32 text-transparent text-7xl lg:text-9xl;
+  @apply font-serif absolute right-32 text-transparent hidden sm:block text-7xl lg:text-9xl;
 }
 .background-todo::before {
   content: "CALENDAR";
   -webkit-text-stroke: 1px rgb(128, 96, 96);
-  @apply font-serif absolute right-32 text-transparent text-5xl md:text-7xl lg:text-8xl xl:text-9xl;
+  @apply font-serif absolute right-32 text-transparent text-5xl hidden sm:block md:text-7xl lg:text-8xl xl:text-9xl;
 }

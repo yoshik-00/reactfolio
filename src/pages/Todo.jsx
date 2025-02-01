@@ -128,7 +128,7 @@ const Todo = () => {
   return (
     <div
       id="todo"
-      className="container mt-12 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full"
+      className="container mt-12 flex justify-between items-center mx-auto px-3 sm:px-8 md:px-14 lg:px-24 w-full"
     >
       <section className="w-full">
         <h2 className="secondary-title">カレンダー</h2>

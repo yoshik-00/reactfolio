@@ -115,7 +115,7 @@ const Home = () => {
               私が習得したスキル
             </p>
             <div className="my-16 items-start">
-              <div className="w-full shadow-md p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:shadow-xl rounded-md transition-all duration-300 cursor-pointer">
+              <div className="w-full shadow-md p-8 sm:p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:shadow-xl rounded-md transition-all duration-300 cursor-pointer">
                 <Link to="/skills" state={{ state: "フロントエンド" }}>
                   <div className="text-center flex flex-wrap justify-center lg:text-left lg:block">
                     <h3 className="text-3xl font-semibold">
@@ -158,7 +158,7 @@ const Home = () => {
                 </Link>
               </div>
 
-              <div className="w-full shadow-md p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:shadow-xl rounded-md transition-all duration-300 cursor-pointer">
+              <div className="w-full shadow-md p-8 sm:p-16 lg:py-20 flex justify-center lg:justify-start flex-wrap lg:space-x-32 hover:shadow-xl rounded-md transition-all duration-300 cursor-pointer">
                 <Link to="/skills" state={{ state: "バックエンド" }}>
                   <div className="text-center flex flex-wrap justify-center lg:text-left lg:block">
                     <h3 className="text-3xl font-semibold">バックエンド開発</h3>

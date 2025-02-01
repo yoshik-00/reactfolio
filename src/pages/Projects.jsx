@@ -92,7 +92,7 @@ const Project = () => {
             </div>
 
             {/* Right Column */}
-            <div className="lg:col-span-6">
+            <div className="hidden sm:block lg:col-span-6">
               {header.state === "医療中間サーバ" && (
                 <YamanoteLineToHamamatsucho />
               )}
