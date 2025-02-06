@@ -63,7 +63,7 @@ const SkillCard = ({ skill }) => {
               <li key={index} className="text-gray-700 text-sm">
                 {project.split("\n").map((line, index) => (
                   <React.Fragment key={index}>
-                    {line === "医療中間サーバー（〇〇登録受付結果画面）" ? (
+                    {line === "中間サーバー（〇〇登録受付結果画面）" ? (
                       <SkillsModal param={line} />
                     ) : (
                       line

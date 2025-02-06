@@ -88,7 +88,7 @@ const Home = () => {
               <div className="shadow-sm hover:shadow-xl rounded-md transition-all duration-300">
                 <Link
                   to="/projects"
-                  state={{ state: "医療中間サーバ" }}
+                  state={{ state: "中間サーバ" }}
                   className="relative"
                 >
                   <img

@@ -17,7 +17,7 @@ const Project = () => {
   const header = location.state || {};
 
   let contents = [];
-  if (header.state === "医療中間サーバ") {
+  if (header.state === "中間サーバ") {
     contents = [
       data.government.term,
       data.government.content,
@@ -93,9 +93,7 @@ const Project = () => {
 
             {/* Right Column */}
             <div className="hidden sm:block lg:col-span-6">
-              {header.state === "医療中間サーバ" && (
-                <YamanoteLineToHamamatsucho />
-              )}
+              {header.state === "中間サーバ" && <YamanoteLineToHamamatsucho />}
               {header.state === "生命保険" && <YamanoteLineToOosaki />}
             </div>
           </div>

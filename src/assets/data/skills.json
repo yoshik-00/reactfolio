@@ -11,8 +11,8 @@
           "experience": "1年",
           "projects": [
             "ポートフォリオ",
-            "かんぽ生命保険　支払業務システム（IE→Edge更改対応）",
-            "医療中間サーバー（〇〇登録受付結果画面）"
+            "生命保険　支払業務システム（IE→Edge更改対応）",
+            "中間サーバー（〇〇登録受付結果画面）"
           ],
           "details": "マークアップ記法, \n タグベース記法, \n アニメーションとトランジション, \n フレックスボックスとグリッドレイアウト, \n セレクタ（DOM操作）"
         },
@@ -22,7 +22,7 @@
           "experience": "1年",
           "projects": [
             "ポートフォリオ",
-            "かんぽ生命保険　支払業務システム（IE→Edge更改対応）"
+            "生命保険　支払業務システム（IE→Edge更改対応）"
           ],
           "details": "型安全性, \n DOM操作, \n イベントハンドリング, \n 非同期処理, \n モジュール管理（ES6以降）"
         },
@@ -45,7 +45,7 @@
           "level": 2,
           "experience": "1年",
           "projects": [
-            "医療中間サーバー（〇〇登録受付結果画面）",
+            "中間サーバー（〇〇登録受付結果画面）",
             "その他保守開発画面"
           ],
           "details": "XMLベース記法, \n アニメーション, \n レスポンシブデザイン"
@@ -76,11 +76,11 @@
           "level": 3,
           "experience": "2年",
           "projects": [
-            "医療中間サーバー（〇〇登録受付結果画面）",
-            "医療中間サーバー（一斉通知バッチ）",
+            "中間サーバー（〇〇登録受付結果画面）",
+            "中間サーバー（一斉通知バッチ）",
             "その他保守開発画面"
           ],
-          "details": "JSF（View-managedBean-logicのMVCモデル）, \n Hibernate（エンティティマネージャーとアノテーションによるORM）, \n Spring Framework（かんぽ生命保険の現場にてオフショア開発のレビューの経験のみ）, \n JUnit（単体テスト） "
+          "details": "JSF（View-managedBean-logicのMVCモデル）, \n Hibernate（エンティティマネージャーとアノテーションによるORM）, \n Spring Framework（生命保険の現場にてオフショア開発のレビューの経験のみ）, \n JUnit（単体テスト） "
         },
         {
           "name": "SQL",
@@ -101,22 +101,25 @@
           "name": "各種AWSクラウド",
           "level": 4,
           "experience": "0.5年",
-          "projects": ["ポートフォリオ", "医療中間サーバー（保守開発）"],
-          "details": "Amazon S3（医療中間サーバー―保守開発にて構築済みのS3バケットを使用）, \n EC2, \n AWS Amplify（フロントエンドのCI/CDの構築に使用）, \n AWS Cognito（認証機能の構築に使用）, \n  AWS ACM（ssl証明書作成）,  \n AWS Route 53（ホストゾーン作成）,  \n AWS ALB, \n AWS App Runner "
+          "projects": ["ポートフォリオ", "中間サーバー（保守開発）"],
+          "details": "Amazon S3（中間サーバー―保守開発にて構築済みのS3バケットを使用）, \n EC2, \n AWS Amplify（フロントエンドのCI/CDの構築に使用）, \n AWS Cognito（認証機能の構築に使用）, \n  AWS ACM（ssl証明書作成）,  \n AWS Route 53（ホストゾーン作成）,  \n AWS ALB, \n AWS App Runner "
         },
         {
           "name": "Git",
           "level": 4,
           "experience": "1年",
-          "projects": ["ポートフォリオ", "医療中間サーバー"],
-          "details": "Git CLI（医療中間サーバーにてGit bashで使用）,\n SourceTree（リポジトリ管理）, \n GitLab, \n GitHub"
+          "projects": ["ポートフォリオ", "中間サーバー"],
+          "details": "Git CLI（中間サーバーにてGit bashで使用）,\n SourceTree（リポジトリ管理）, \n GitLab, \n GitHub"
         },
         {
           "name": "Docker",
           "level": 2,
           "experience": "1年",
-          "projects": ["医療中間サーバー（保守開発　単体環境動作確認）"],
-          "details": "Docker compose, \n Docler Desktop"
+          "projects": [
+            "中間サーバー（保守開発　単体環境動作確認）",
+            "ポートフォリオ（本番環境ではredisをdocker composeで構築しています）"
+          ],
+          "details": "Docker compose, \n Docker Desktop"
         },
         {
           "name": "Nginx",
@@ -130,7 +133,7 @@
           "level": 2,
           "experience": "0.5年",
           "projects": ["ポートフォリオ"],
-          "details": "キャッシュ（当ポートフォリオのTO-doカレンダーの機能にて使用）, \n NO SQL, \n Redis Insight"
+          "details": "キャッシュ（当ポートフォリオのTo-doカレンダーの機能にて使用）, \n NO SQL, \n Redis Insight"
         }
       ]
     },
