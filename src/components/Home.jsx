@@ -69,7 +69,7 @@ const Home = () => {
               今までに携わってきたプロジェクト
             </p>
             <div className="my-16 grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-6 z-20">
-              <div className="shadow-sm hover:shadow-xl rounded-md transition-all duration-300">
+              <div className="shadow-sm  grayscale hover:grayscale-0 hover:shadow-xl rounded-md transition-all duration-300">
                 <Link
                   to="/projects"
                   state={{ state: "生命保険" }}
@@ -85,7 +85,7 @@ const Home = () => {
                   </span>
                 </Link>
               </div>
-              <div className="shadow-sm hover:shadow-xl rounded-md transition-all duration-300">
+              <div className="shadow-sm  grayscale hover:grayscale-0 hover:shadow-xl rounded-md transition-all duration-300">
                 <Link
                   to="/projects"
                   state={{ state: "中間サーバ" }}

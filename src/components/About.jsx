@@ -3,7 +3,7 @@ import image6 from "../assets/image6.jpg";
 const About = () => (
   <div
     id="about"
-    className="container mt-64 flex justify-between items-center mx-auto px-8 lg:px-14 lg:px-24 w-full"
+    className="container mt-64 flex justify-between items-center mx-auto px-8 lg:px-14 w-full"
   >
     <section className="w-full">
       <h2 className="secondary-title">私について</h2>
