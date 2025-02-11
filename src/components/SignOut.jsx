@@ -33,7 +33,7 @@ const SignOut = () => {
       className="flex items-center my-8 hover:text-selectedText transition-all duration-300"
       onClick={handleSignOut}
     >
-      <VscSignOut size={20} />
+      <VscSignOut size={25} />
     </button>
   );
 };

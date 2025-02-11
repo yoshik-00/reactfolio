@@ -54,7 +54,7 @@ export const YamanoteLineToOosaki = () => {
   return (
     <div className="max-w-2xl mx-auto p-8">
       <div
-        className="rounded-2xl shadow-2xl p-6"
+        className="rounded-2xl shadow-md p-6 bg-neutral-300"
         onMouseEnter={handleMouseEnter}
       >
         <svg width="540" height="300" className="ml-20 mb-10">
@@ -198,7 +198,7 @@ export const YamanoteLineToHamamatsucho = () => {
   return (
     <div className="max-w-2xl mx-auto p-8">
       <div
-        className="rounded-2xl shadow-2xl p-6"
+        className="rounded-2xl shadow-md p-6 bg-neutral-300"
         onMouseEnter={handleMouseEnter}
       >
         <svg width="540" height="300" className="ml-20 mb-10">

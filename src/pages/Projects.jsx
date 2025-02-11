@@ -43,7 +43,7 @@ const Project = () => {
           </div>
 
           <div className="p-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center font-semibold text-xl space-x-2">
               <BiAnchor className="flex-shrink-0" />
               <h1 className="background-project text-lg">{header.state}</h1>
             </div>

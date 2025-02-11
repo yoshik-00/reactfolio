@@ -4,6 +4,7 @@ import { Code, Server, Star, ExternalLink } from "lucide-react";
 import skillsData from "../assets/data/skills.json";
 import { useLocation } from "react-router";
 import SkillsModal from "../components/SkillsModal";
+import { BiAnchor } from "react-icons/bi";
 
 const SkillCard = ({ skill }) => {
   const location = useLocation();
@@ -106,7 +107,8 @@ const Skills = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
             {/* category */}
             <div className="text-center mb-8 sm:mb-12">
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-3">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-3 flex items-center justify-center">
+                <BiAnchor className="mr-2" />
                 {categoryData.title}
               </h3>
               <p className="text-secondary max-w-2xl mx-auto text-sm sm:text-base">

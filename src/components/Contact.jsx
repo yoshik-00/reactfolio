@@ -139,14 +139,16 @@ const Contact = () => {
               <button
                 id="submitButton"
                 type="submit"
-                className="font-bold hover:text-selectedText transition-all duration-300"
+                // className="font-bold hover:text-selectedText transition-all duration-300 border border-black"
+                className="bg-cyan-700 hover:bg-cyan-800 transition-all duration-300 text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 送信
               </button>
               <button
                 id="clearButton"
                 type="reset"
-                className="font-bold hover:text-selectedText transition-all duration-300"
+                // className="font-bold hover:text-selectedText transition-all duration-300 border bg-gray-300 text-white p-1"
+                className="bg-gray-100 hover:bg-gray-200 transition-all duration-300 text-gray-700 font-medium py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
                 onClick={handleClear}
               >
                 クリア
