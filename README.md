@@ -18,15 +18,15 @@
 
 - ### 要件
   上記の目的を考慮し今回作成するアプリケーションの要件を以下に記載する。
-  ・汎用性が高くモダンな以下の技術スタックを採用する。
-  　・react
-  　・tailwindcss
-  　・node.js
-  　・RESTAPI
-  　・docker
-  ・notion の DB 機能を使用した to-do アプリを利用する。
-  ・認証機能を実装しセキュリティを堅牢にする。
-  ・フォーム機能を実装する。
+  - 汎用性が高くモダンな以下の技術スタックを採用する。
+    - react
+    - tailwindcss
+    - node.js
+    - RESTAPI
+    - docker
+  - notion の DB 機能を使用した to-do アプリを利用する。
+  - 認証機能を実装しセキュリティを堅牢にする。
+  - フォーム機能を実装する。
 - ### 実装
 
   ##### システムアーキテクチャ図
@@ -45,20 +45,23 @@
     ###### model
 
       <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" />
-      react.state<img src="" />
+      <img src="https://img.shields.io/badge/React state-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
       <img src="https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=white" />
 
     ###### controller
 
       <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
-      react.memo<img src="" />
-      react.ref<img src="" />
-      react.effect<img src="" />
+      <img src="https://img.shields.io/badge/React memo-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+      <img src="https://img.shields.io/badge/React ref-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+      <img src="https://img.shields.io/badge/React effect-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
 
 - ### 導入
   > ```
   > git clone https://github.com/yoshik-00/reactfolio.git
+  > 
   > npm install
+  > 
+  > npm run dev
   > ```
 
 ---
