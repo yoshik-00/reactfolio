@@ -55,13 +55,28 @@
       <img src="https://img.shields.io/badge/React ref-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
       <img src="https://img.shields.io/badge/React effect-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
 
-- ### 導入
+- ### 導入（ローカル）
   > ```
   > git clone https://github.com/yoshik-00/reactfolio.git
-  > 
+  >
+  > reactfolio直下に.env.developmentを作成し以下の記述
+  >
+  >   VITE_API_URL="http://localhost:3001"
+  >
+  >   #cognito
+  >   VITE_AUTHORITY="https://cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_wfzavgr0h"
+  >   VITE_CLIENT_ID="6ehpfv3e4jalpbuvbploov12qh"
+  >   VITE_REDIRECT_URI="http://localhost:5173/"
+  >   VITE_LOGOUT_URI="http://localhost:5173/"
+  >   VITE_DOMAIN="https://ap-northeast-1wfzavgr0h.auth.ap-northeast-1.amazoncognito.com"
+  >
   > npm install
-  > 
+  >
   > npm run dev
+  >
+  > 以下のリンクに接続
+  > http://localhost:5173/
+  >
   > ```
 
 ---
